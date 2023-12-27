@@ -52,8 +52,6 @@ const Filters = ({ setTuts }) => {
       label: lang.charAt(0).toUpperCase() + lang.slice(1),
       value: lang,
     }));
-  // Add the "Other" option for tutorials without a listed language
-  uniqueLanguages.push({ label: "Other", value: "other" });
   const languageFilter = uniqueLanguages;
 
   // Given a query, filter the tutorials and update the state
@@ -81,8 +79,6 @@ const Filters = ({ setTuts }) => {
       filteredTuts.forEach((tut) => {
         query.language.forEach((qLang) => {
           if (tut.language && tut.language.includes(qLang)) {
-            return just.push(tut);
-          } else if (qLang === "other" && !tut.language) {
             return just.push(tut);
           }
         });
